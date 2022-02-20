@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="page-top-section set-bg" data-setbg="{{ url_for('static', filename = 'img/header-bg/1.jpg')}}">
+    <div class="container">
+        <h2>Новый Пост</h2>
+    </div>
+</section>
+<section class="blog-section spad">
+    <div class="container">
+        <div class="row">
+        <form class="row login_form" action="" id="register_form" method="POST", enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+            <div class="col-lg-8 form-group">
+                {% if form.title.errors %}
+                {{ form.title(class="form-control form-control-lg is-invalid, placeholder='Заголовок'") }}
+                <div class="invalid-feedback">
+                    {% for error in form.title.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.title(class="form-control form-control-lg", placeholder='Заголовок') }}
+                {% endif %}
+            </div>
+            <div class="col-lg-8 form-group">
+                {% if form.content.errors %}
+                {{ form.content(class="form-control form-control-lg is-invalid", placeholder='Контент') }}
+                <div class="invalid-feedback">
+                    {% for error in form.content.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.content(class="form-control form-control-lg", placeholder='Контент') }}
+                {% endif %}
+            </div>
+            <div class="col-lg-8 form-group">
+                {% if form.image.errors %}
+                {{ form.image(class="form-control form-control-lg is-invalid", placeholder='Картинка поста') }}
+                <div class="invalid-feedback">
+                    {% for error in form.image.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.image(class="form-control form-control-lg", placeholder='Картинка поста') }}
+                {% endif %}
+            </div>
+            {{ form.submit(class="button button-register w-100") }}
+        </form>
+    </section>
+        </div>
+</div>
+{% endblock %}
