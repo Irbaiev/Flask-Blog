@@ -67,7 +67,7 @@
 											required=""></textarea>
 									</div>
 									<button class="btn btn-info">Post Comment</button>
-									{% if current_user.is_authenticated== post.author %}
+									{% if current_user.is_authenticated == post.user_id %}
 									<a href="/blog/{{post.id}}/del" class="btn btn-danger">Удалить пост</a>
 									<a href="/blog/{{post.id}}/update" class="btn btn-primary">Редактировать</a>
 									{% endif %} 
