@@ -69,12 +69,13 @@ def registration():
 def post_detail(post_id):
     post = Post.query.get(post_id)
     comments=Comment.query.order_by(Comment.date_posted)
+    user = User.query.all()
     if request.method == 'POST':
        comment = Comment(name=request.form.get('name'), subject=request.form.get('subject'),email=request.form.get('email'),message=request.form.get('message'),post=post)
        db.session.add(comment)
        db.session.commit() 
        redirect (url_for('post_detail',post_id=post.id))
-    return render_template('post_detail.html', post=post,comments=comments)
+    return render_template('post_detail.html', post=post,comments=comments, user = user)
 
 @app.route('/blog/<int:post_id>/del')
 def post_delete(post_id):

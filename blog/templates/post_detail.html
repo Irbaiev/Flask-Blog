@@ -9,6 +9,7 @@
 </section>
 <!-- Page top section end -->
 
+
 <!-- Blog section -->
 <section class="blog-section spad">
 	<div class="container">
@@ -66,10 +67,13 @@
 											required=""></textarea>
 									</div>
 									<button class="btn btn-info">Post Comment</button>
+									{% if current_user.is_authenticated== post.author %}
 									<a href="/blog/{{post.id}}/del" class="btn btn-danger">Удалить пост</a>
 									<a href="/blog/{{post.id}}/update" class="btn btn-primary">Редактировать</a>
 									{% endif %} 
+									{% endif %} 
 	</section>
+
 	<!-- Blog section end -->
 
 	{%endblock%}
