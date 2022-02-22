@@ -1,4 +1,3 @@
-import re
 from tokenize import Comment
 from turtle import title
 from unicodedata import name

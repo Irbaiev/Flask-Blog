@@ -4,7 +4,7 @@ from unittest import TextTestResult
 from xml.dom import ValidationErr
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField ,TextAreaField
-from wtforms.validators import DataRequired, Email, EqualTo
+from wtforms.validators import DataRequired, Email, EqualTo, ValidationError, Length
 import email_validator
 from flask_wtf.file import  FileField, FileAllowed
 from blog.models import User
@@ -18,7 +18,7 @@ class RegistrationForm(FlaskForm):
     def validate_email(self, email):
         user = User.query.filter_by(email=email.data).first()
         if user:
-            raise ValidationErr('Такой email существует')
+            raise ValidationError('Такой email существует')
 
 
 class PostForm(FlaskForm):
